@@ -7,9 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		594F531724616FA0005ABB36 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 594F531624616FA0005ABB36 /* Main.storyboard */; };
 		5960AC002456E42D00F6974C /* TimerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5960ABFF2456E42D00F6974C /* TimerHelper.swift */; };
 		597E0B7A244EFF0E00AC775F /* TweetHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 597E0B79244EFF0E00AC775F /* TweetHelpers.swift */; };
-		59EA66B12450957C000E73FC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 59EA66B02450957C000E73FC /* Main.storyboard */; };
+		59BE34A42461730400F280EC /* RepositorySettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BE34A32461730400F280EC /* RepositorySettings.swift */; };
 		7305DAE52441F1FB00655850 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7305DAE42441F1FB00655850 /* AppDelegate.swift */; };
 		7305DAE72441F1FB00655850 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7305DAE62441F1FB00655850 /* SceneDelegate.swift */; };
 		7305DAE92441F1FB00655850 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7305DAE82441F1FB00655850 /* ViewController.swift */; };
@@ -26,9 +27,10 @@
 
 /* Begin PBXFileReference section */
 		37CA291A52F09B4802C414F8 /* Pods-twitter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-twitter.release.xcconfig"; path = "Target Support Files/Pods-twitter/Pods-twitter.release.xcconfig"; sourceTree = "<group>"; };
+		594F531624616FA0005ABB36 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = ../../../Main.storyboard; sourceTree = "<group>"; };
 		5960ABFF2456E42D00F6974C /* TimerHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerHelper.swift; sourceTree = "<group>"; };
 		597E0B79244EFF0E00AC775F /* TweetHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweetHelpers.swift; sourceTree = "<group>"; };
-		59EA66B02450957C000E73FC /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = ../../../../.Trash/Main.storyboard; sourceTree = "<group>"; };
+		59BE34A32461730400F280EC /* RepositorySettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositorySettings.swift; sourceTree = "<group>"; };
 		7305DAE12441F1FB00655850 /* twitter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = twitter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7305DAE42441F1FB00655850 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7305DAE62441F1FB00655850 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -89,7 +91,7 @@
 		7305DAE32441F1FB00655850 /* twitter */ = {
 			isa = PBXGroup;
 			children = (
-				59EA66B02450957C000E73FC /* Main.storyboard */,
+				594F531624616FA0005ABB36 /* Main.storyboard */,
 				7305DAFD2441F2B400655850 /* Controllers */,
 				7305DAFC2441F2AC00655850 /* Model */,
 				7305DAFB2441F29C00655850 /* View */,
@@ -119,6 +121,7 @@
 			isa = PBXGroup;
 			children = (
 				734F94F02444873400AFBC8A /* TweetRepository.swift */,
+				59BE34A32461730400F280EC /* RepositorySettings.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -226,7 +229,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				59EA66B12450957C000E73FC /* Main.storyboard in Resources */,
+				594F531724616FA0005ABB36 /* Main.storyboard in Resources */,
 				7305DAF12441F1FE00655850 /* LaunchScreen.storyboard in Resources */,
 				7305DAEE2441F1FE00655850 /* Assets.xcassets in Resources */,
 			);
@@ -289,6 +292,7 @@
 				7378718F2444BEDC00A3F397 /* test.m in Sources */,
 				734F94F12444873400AFBC8A /* TweetRepository.swift in Sources */,
 				7305DAE72441F1FB00655850 /* SceneDelegate.swift in Sources */,
+				59BE34A42461730400F280EC /* RepositorySettings.swift in Sources */,
 				7305DB032441F47800655850 /* TweetListScreenViewController.swift in Sources */,
 				597E0B7A244EFF0E00AC775F /* TweetHelpers.swift in Sources */,
 				5960AC002456E42D00F6974C /* TimerHelper.swift in Sources */,

@@ -15,7 +15,7 @@ class TweetRepository {
         
         var tweets = [TweetListItem]()
         
-        let twitterAPI = STTwitterAPI(oAuthConsumerKey: "OrVizW0ODdxdp47o2nsMuHyY3", consumerSecret: "33EMqifCTohMB9SU2DLqOFrQOVy4YnlPo5cBd73lhvu9ik9tKa", oauthToken: "147685457-WsBvVQhFAGlXAlnFh6ShaC6hVQvLZdhyS3ww3P6q", oauthTokenSecret: "4gmLEbFVd96ofLXOj1ZIT5Pf0D7BGXYZMgKUWKSpFSxWD")
+        let twitterAPI = STTwitterAPI(oAuthConsumerKey: RepositorySettings.OAuthConsumerKey, consumerSecret: RepositorySettings.ConsumerSecret, oauthToken: RepositorySettings.oauthToken, oauthTokenSecret: RepositorySettings.oauthTokenSecret)
         
         
         twitterAPI?.getSearchTweets(withQuery: searchText, successBlock: { (extraInfo, statuses) in

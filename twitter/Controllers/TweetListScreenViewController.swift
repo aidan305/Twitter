@@ -14,7 +14,6 @@ class TweetListScreenViewController: UIViewController, HashtagSelectionDelegate,
     let tweetRepository = TweetRepository()
     let tweetHelpers = TweetHelpers()
     var searchText: String?
-    var tweetListTableViewCell = TweetListTableViewCell()
     let activityIndicator = UIActivityIndicatorView(style: .large)
     var selectedTime: String? = ""
     let times = ["15 minutes", "30 seconds", "15 minutes", "no refresh"]
@@ -52,12 +51,11 @@ class TweetListScreenViewController: UIViewController, HashtagSelectionDelegate,
                 self.stopTweetActivityIndicator()
             }
         })
-        tweets = []
     }
     
     func didTapHashtag(hashtag: String) {
-        //getting called everytime a user selects hashtag (pressed in tweetlistTableViewCell)
         startTweetActivityIndicator()
+        tweets = []
         loadTweets(searchText: hashtag)
     }
     

@@ -22,7 +22,7 @@ class SearchScreenViewController: UIViewController {
     
     @IBAction func searchButtonClicked(_ sender: Any) {
         
-        if let tweetListScreenVC = self.storyboard?.instantiateViewController(identifier: "TweetListScreenViewControllerID") as TweetListScreenViewController? {
+        if let tweetListScreenVC = self.storyboard?.instantiateViewController(identifier: "TweetListScreenViewControllerID") as? TweetListScreenViewController {
             
             tweetListScreenVC.searchText = searchTextBox.text
             defaults.set(searchTextBox.text, forKey: "SearchTextSaved")
