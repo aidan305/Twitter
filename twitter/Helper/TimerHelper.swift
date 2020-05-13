@@ -43,7 +43,6 @@ class TimerHelper {
     @objc func fireTimer()
     {
         timeLeft -= 1
-        print("\(timeLeft)")
         timerDelegate.timeLeftTillRefresh(timeLeft: "\(timeLeft)")
         
         if timeLeft <= 0 {

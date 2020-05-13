@@ -7,5 +7,6 @@ target 'twitter' do
 
   # Pods for twitter
   pod 'STTwitter'
+  pod 'OhhAuth'
 
 end

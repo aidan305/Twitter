@@ -9,8 +9,8 @@
 import Foundation
 
 class RepositorySettings {
-    static let OAuthConsumerKey = "OrVizW0ODdxdp47o2nsMuHyY3"
-    static let ConsumerSecret = "33EMqifCTohMB9SU2DLqOFrQOVy4YnlPo5cBd73lhvu9ik9tKa"
-    static let oauthToken = "147685457-WsBvVQhFAGlXAlnFh6ShaC6hVQvLZdhyS3ww3P6q"
-    static let oauthTokenSecret = "4gmLEbFVd96ofLXOj1ZIT5Pf0D7BGXYZMgKUWKSpFSxWD"
+    static let OAuthConsumerKey = "A04Vp9LZGu1WbD7BxLDY5ZUiu"
+    static let ConsumerSecret = "EAzoCucw5udvPMwRB0vsqQgNASUpqIuat3jdt2eqVguPwpT41i"
+    static let oauthToken = "147685457-34NheBog7gJ5fuaWG8sH0O5vxKF7HKJfOpNA1yga"
+    static let oauthTokenSecret = "AKcL97Z0MiCMLqoDJB020aTmQu7EqoE0d1AybkTKccr3D"
 }

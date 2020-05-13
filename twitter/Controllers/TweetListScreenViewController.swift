@@ -164,7 +164,9 @@ extension TweetListScreenViewController: UIPickerViewDataSource, UIPickerViewDel
     func performSearchRefresh() {
         if let searchTerm = searchText {
             loadTweets(searchText: searchTerm)
+            startTweetActivityIndicator()
             settings.text = "Refreshed"
+            
     }
 }
 }

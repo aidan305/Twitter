@@ -9,49 +9,34 @@
 import Foundation
 
 class TweetRepository {
-
-  
+    
+    let apiClient = TweetAPIClient()    
     func fetchTweets(searchText: String, completion: @escaping ([TweetListItem]?) -> Void) {
         
         var tweets = [TweetListItem]()
         
-        let twitterAPI = STTwitterAPI(oAuthConsumerKey: RepositorySettings.OAuthConsumerKey, consumerSecret: RepositorySettings.ConsumerSecret, oauthToken: RepositorySettings.oauthToken, oauthTokenSecret: RepositorySettings.oauthTokenSecret)
-        
-        
-        twitterAPI?.getSearchTweets(withQuery: searchText, successBlock: { (extraInfo, statuses) in
-            for n in 0...statuses!.count - 1 {
+        apiClient.send(GetTweets(q: "\(searchText)")) { response in
+            do {
+                let dataContainer = try response.get()
                 
-                var tweetText = ""
-                var hashtagsArr = [String]()
-                
-                let text = statuses?[n] as? [String: AnyObject] //cast to array of any object type
-                tweetText = text?["text"] as! String
-                
-                
-                if let entities = text?["entities"] {
-                    
-                    let hashtags = entities["hashtags"] as! Array<Any>
-                    
-                    if hashtags.count > 0 {
-                        for n in 0...hashtags.count - 1 {
-                            let hashTag = hashtags[n] as? Dictionary<String, AnyObject>
-                            
-                            // print("this is the hash tag text \(hashTag?["text"])")
-                            hashtagsArr.append(hashTag?["text"] as! String)
-                        }
-                        
+                for tweet in dataContainer {
+                    var tweetText = ""
+                    var hashtagsArr = [String]()
+                    tweetText = tweet.text
+                    for hashtags in tweet.entities.hashtags {
+                        hashtagsArr.append(hashtags.text)
                     }
-                    print("\n")
+                    let tweet = TweetListItem(tweetText: tweetText, hashTag: hashtagsArr)
+                    tweets.append(tweet)
                 }
                 
-                let tweet = TweetListItem(tweetText: tweetText, hashTag: hashtagsArr)
-                tweets.append(tweet)
-                
+                let tweetDataModel = tweets
+                completion(tweetDataModel)
             }
-            let tweetDataModel = tweets
-            completion(tweetDataModel)
-            
-        }, errorBlock: {(error) -> Void in print(error!)})
+            catch {
+                print(error)
+            }
+        }
     }
 }
 

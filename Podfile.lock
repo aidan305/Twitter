@@ -1,16 +1,20 @@
 PODS:
+  - OhhAuth (1.1.0)
   - STTwitter (0.2.6)
 
 DEPENDENCIES:
+  - OhhAuth
   - STTwitter
 
 SPEC REPOS:
   trunk:
+    - OhhAuth
     - STTwitter
 
 SPEC CHECKSUMS:
+  OhhAuth: 0c43cb209df11abaeced699b08508fe9f577ff0b
   STTwitter: 30ee2f79eff78c3d633a1edc869e97db9c9ead59
 
-PODFILE CHECKSUM: 3d452c20f5d6553dbfa002b37f639abcb75f5461
+PODFILE CHECKSUM: f55f0214edf18521210f32609f74716864530686
 
 COCOAPODS: 1.9.1
