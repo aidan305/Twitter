@@ -1,5 +1,4 @@
 import Foundation
-import OhhAuth
 
 public typealias ResultCallback<Value> = (Result<Value, Error>) -> Void
 
@@ -64,9 +63,11 @@ public class TweetAPIClient {
     
     func authorizeAPIEndpoint(endpoint: URL) -> URLRequest{
         var urlRequest = URLRequest(url: endpoint)
-        //using ohhAuth pod to authenticate us
-        urlRequest.oAuthSign(method: "GET", consumerCredentials: APIKey.consumerAPIKeys)
+        urlRequest.addValue("application/json", forHTTPHeaderField: "Accept")
+        urlRequest.addValue(APISettings.token, forHTTPHeaderField: "Authorization")
         return urlRequest
     }
+    
+    
 }
 

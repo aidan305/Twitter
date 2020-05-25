@@ -15,8 +15,14 @@ class TweetListScreenViewController: UIViewController, HashtagSelectionDelegate,
     let tweetHelpers = TweetHelpers()
     var searchText: String?
     let activityIndicator = UIActivityIndicatorView(style: .large)
+    
     var selectedTime: String? = ""
+    var selectedHashTag: String? = ""
+    let timePicker = UIPickerView()
+    var hashTagPicker = UIPickerView()
+    var hashTagPickertoolBar = UIToolbar()
     let times = ["15 minutes", "30 seconds", "15 minutes", "no refresh"]
+    var hashTags: [String] = []
     
     @IBOutlet weak var settings: UITextView!
     @IBOutlet weak var tweetsTableView: UITableView?
@@ -86,90 +92,32 @@ extension TweetListScreenViewController: UITableViewDelegate, UITableViewDataSou
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        var cellToReturn = TweetListTableViewCell()
         let tweet = tweets[indexPath.row]
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "TweetCell") as! TweetListTableViewCell
-        cell.delegate = self
-        cell.setTweetToUi(tweet: tweet)
-        return cell
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "TweetCell") as? TweetListTableViewCell{
+            cell.delegate = self
+            cell.setTweetToUi(tweet: tweet)
+            cellToReturn = cell
+            return cellToReturn
+        }
+        
+        return  cellToReturn
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let tweet = tweets[indexPath.row]
+        print("row selected with \(tweet)")
+        
+        if tweets[indexPath.row].hashTag != [] {
+            createHashTagPicker(tweet: tweets[indexPath.row])
+        } else {
+            print("no hashtags for the selected tweet")
+        }
     }
     
 }
 
-//MARK: UI picker setup for timer refresh
-extension TweetListScreenViewController: UIPickerViewDataSource, UIPickerViewDelegate {
-    
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return times.count
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return times[row]
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        selectedTime = times[row]
-        settings.text = times[row]
-    }
-    
-    func createRefreshPicker() {
-        settings.isEditable = false
-        settings.isSelectable = true
-        let timePicker = UIPickerView()
-        timePicker.delegate = self
-        settings.inputView = timePicker
-        createPickerToolbar()
-    }
-    
-    func createPickerToolbar() {
-        let toolbar = UIToolbar()
-        toolbar.sizeToFit()
-        let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self,
-                                         action: #selector(TweetListScreenViewController.dismissKeyboard))
-        toolbar.setItems([doneButton], animated: false)
-        toolbar.isUserInteractionEnabled = true
-        settings.inputAccessoryView = toolbar
-        
-    }
-
-    
-    @objc func dismissKeyboard() {
-        view.endEditing(true)
-        
-        let timer = TimerHelper()
-        timer.timerDelegate = self
-        
-        if settings.text == "30 seconds" {
-            timer.startTimer(timeToRefresh: "30 seconds")
-        }
-        else if settings.text == "5 minutes" {
-            timer.startTimer(timeToRefresh: "5 minutes")
-        }
-        else if settings.text == "15 minutes" {
-            timer.startTimer(timeToRefresh: "15 minutes")
-        }
-        else {
-            return
-        }
-    }
-    
-    func timeLeftTillRefresh(timeLeft: String) {
-        settings.text = "\(timeLeft)s left"
-    }
-    
-    func performSearchRefresh() {
-        if let searchTerm = searchText {
-            loadTweets(searchText: searchTerm)
-            startTweetActivityIndicator()
-            settings.text = "Refreshed"
-            
-    }
-}
-}
 
 
 
