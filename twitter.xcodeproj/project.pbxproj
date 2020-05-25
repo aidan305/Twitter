@@ -18,6 +18,7 @@
 		595424EF246C3B380009B815 /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 595424EE246C3B380009B815 /* APIKey.swift */; };
 		5960AC002456E42D00F6974C /* TimerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5960ABFF2456E42D00F6974C /* TimerHelper.swift */; };
 		597E0B7A244EFF0E00AC775F /* TweetHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 597E0B79244EFF0E00AC775F /* TweetHelpers.swift */; };
+		59810A8D247BFDD700895C46 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 59810A8C247BFDD700895C46 /* Main.storyboard */; };
 		59F5410B247BC3B4001BB0C6 /* APISettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F5410A247BC3B4001BB0C6 /* APISettings.swift */; };
 		59F5410D247BC59E001BB0C6 /* TweetListScreenViewController+Pickers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F5410C247BC59E001BB0C6 /* TweetListScreenViewController+Pickers.swift */; };
 		7305DAE52441F1FB00655850 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7305DAE42441F1FB00655850 /* AppDelegate.swift */; };
@@ -47,6 +48,7 @@
 		595424EE246C3B380009B815 /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
 		5960ABFF2456E42D00F6974C /* TimerHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerHelper.swift; sourceTree = "<group>"; };
 		597E0B79244EFF0E00AC775F /* TweetHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweetHelpers.swift; sourceTree = "<group>"; };
+		59810A8C247BFDD700895C46 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		59F5410A247BC3B4001BB0C6 /* APISettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APISettings.swift; sourceTree = "<group>"; };
 		59F5410C247BC59E001BB0C6 /* TweetListScreenViewController+Pickers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TweetListScreenViewController+Pickers.swift"; sourceTree = "<group>"; };
 		7305DAE12441F1FB00655850 /* twitter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = twitter.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -150,6 +152,7 @@
 		7305DAE32441F1FB00655850 /* twitter */ = {
 			isa = PBXGroup;
 			children = (
+				59810A8C247BFDD700895C46 /* Main.storyboard */,
 				7305DAFD2441F2B400655850 /* Controllers */,
 				7305DAFC2441F2AC00655850 /* Model */,
 				7305DAFB2441F29C00655850 /* View */,
@@ -288,6 +291,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				59810A8D247BFDD700895C46 /* Main.storyboard in Resources */,
 				7305DAF12441F1FE00655850 /* LaunchScreen.storyboard in Resources */,
 				7305DAEE2441F1FE00655850 /* Assets.xcassets in Resources */,
 			);
