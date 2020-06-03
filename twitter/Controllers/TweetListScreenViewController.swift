@@ -8,46 +8,54 @@
 
 import UIKit
 
-class TweetListScreenViewController: UIViewController, HashtagSelectionDelegate, TimerDelegate   {
+class TweetListScreenViewController: UIViewController, GenericPickerViewDelegate  {
     
     var tweets: [TweetListItem] = []
     let tweetRepository = TweetRepository()
     let tweetHelpers = TweetHelpers()
     var searchText: String?
     let activityIndicator = UIActivityIndicatorView(style: .large)
-    
-    var selectedTime: String? = ""
-    var selectedHashTag: String? = ""
-    let timePicker = UIPickerView()
-    var hashTagPicker = UIPickerView()
     var hashTagPickertoolBar = UIToolbar()
     let times = ["15 minutes", "30 seconds", "15 minutes", "no refresh"]
     var hashTags: [String] = []
+    var didSelectSettings: Bool = false
+    var didSelectTweet: Bool = false
+    var tweetCell = TweetListTableViewCell()
+    var timerPicker = GenericPickerView()
+    let hashtagPicker = GenericPickerView()
     
-    @IBOutlet weak var settings: UITextView!
+    @IBOutlet weak var settings: UITextField!
     @IBOutlet weak var tweetsTableView: UITableView?
     
-    override func viewWillAppear(_ animated: Bool) {
-        startTweetActivityIndicator()
+    @IBAction func settingsPressed(_ sender: Any) {
+        didSelectSettings = true
     }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        createRefreshPicker()
-        
-        
         guard let searchText = searchText else {
             print("error")
             return
         }
+        
         tweetsTableView?.delegate = self
         tweetsTableView?.dataSource = self
         loadTweets(searchText: searchText)
+        
+        timerPicker.rowItemTitles = self.times
+        self.settings.inputView = self.timerPicker.customPicker
+        self.settings.inputAccessoryView = self.timerPicker.toolbar
+        
+        self.timerPicker.genericDelegate = self
+        self.hashtagPicker.genericDelegate = self
+        
+        self.timerPicker.reloadAllComponents()
+        self.hashtagPicker.reloadAllComponents()
     }
     
     func loadTweets(searchText: String) {
         tweetRepository.fetchTweets(searchText: searchText, completion: {(tweetListDataModel) in
             if let tweetArr = tweetListDataModel {
+                self.tweets = []
                 for tweet in tweetArr {
                     self.tweets.append(tweet)
                 }
@@ -59,13 +67,32 @@ class TweetListScreenViewController: UIViewController, HashtagSelectionDelegate,
         })
     }
     
-    func didTapHashtag(hashtag: String) {
-        startTweetActivityIndicator()
-        tweets = []
-        loadTweets(searchText: hashtag)
+    //MARK: Picker actions on selecting toolbar buttons
+    func didTapDone() {
+        
+        //i.e they selected settings
+        if didSelectSettings == true {
+            let row = self.timerPicker.customPicker.selectedRow(inComponent: 0)
+            self.timerPicker.customPicker.selectRow(row, inComponent: 0, animated: false)
+            self.settings.text = self.times[row]
+            startTimer(timerCount: self.times[row])
+            self.settings.resignFirstResponder()
+            didSelectSettings = false
+        } else {
+            let row = self.hashtagPicker.customPicker.selectedRow(inComponent: 0)
+            self.hashtagPicker.customPicker.selectRow(row, inComponent: 0, animated: false)
+            print("hashtag selected was \(hashtagPicker.selectedRow)")
+            self.hashtagPicker.reloadAllComponents()
+            didSelectTweet = false
+            self.view.endEditing(true)
+            loadTweets(searchText: hashtagPicker.selectedRow)
+        }
     }
     
- 
+    func didTapCancel() {
+        self.hashtagPicker.reloadAllComponents()
+        self.view.endEditing(true)
+    }
 }
 
 //MARK: Activity inidcator
@@ -92,32 +119,61 @@ extension TweetListScreenViewController: UITableViewDelegate, UITableViewDataSou
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cellToReturn = TweetListTableViewCell()
         let tweet = tweets[indexPath.row]
         
         if let cell = tableView.dequeueReusableCell(withIdentifier: "TweetCell") as? TweetListTableViewCell{
-            cell.delegate = self
             cell.setTweetToUi(tweet: tweet)
-            cellToReturn = cell
-            return cellToReturn
+            hashtagPicker.rowItemTitles = tweets[indexPath.row].hashTag
+            cell.tweetTextView.inputView = hashtagPicker.customPicker
+            cell.tweetTextView.inputAccessoryView = hashtagPicker.toolbar
+            tweetCell = cell
+            return tweetCell
         }
-        
-        return  cellToReturn
+        return  tweetCell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let tweet = tweets[indexPath.row]
         print("row selected with \(tweet)")
+    }
+}
+
+//MARK: timer refresh picker functions
+extension TweetListScreenViewController: TimerDelegate{
+    
+    func startTimer(timerCount: String) {
+        view.endEditing(true)
         
-        if tweets[indexPath.row].hashTag != [] {
-            createHashTagPicker(tweet: tweets[indexPath.row])
-        } else {
-            print("no hashtags for the selected tweet")
+        let timer = TimerHelper()
+        timer.timerDelegate = self
+        
+        if timerCount == "30 seconds" {
+            timer.startTimer(timeToRefresh: "30 seconds")
+        }
+        else if timerCount == "5 minutes" {
+            timer.startTimer(timeToRefresh: "5 minutes")
+        }
+        else if timerCount == "15 minutes" {
+            timer.startTimer(timeToRefresh: "15 minutes")
+        }
+        else {
+            return
+        }
+    }
+    
+    func timeLeftTillRefresh(timeLeft: String) {
+        settings.text = "\(timeLeft)s left"
+    }
+    
+    func performSearchRefresh() {
+        if let searchTerm = searchText {
+            loadTweets(searchText: searchTerm)
+            self.startTweetActivityIndicator()
+            self.settings.text = "Refreshed"
         }
     }
     
 }
-
 
 
 

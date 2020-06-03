@@ -75,92 +75,80 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gwj-oQ-Mao">
-                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                                <rect key="frame" x="0.0" y="44" width="374" height="44"/>
                                 <items>
                                     <navigationItem title="Tweet Feed" id="RcZ-G2-jEI"/>
                                 </items>
                             </navigationBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="90" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="vxC-dZ-UEH">
-                                <rect key="frame" x="0.0" y="88" width="414" height="808"/>
+                                <rect key="frame" x="0.0" y="88" width="374" height="808"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TweetCell" rowHeight="109" id="XHy-la-0KH" customClass="TweetListTableViewCell" customModule="twitter" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="109"/>
+                                        <rect key="frame" x="0.0" y="28" width="374" height="109"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="XHy-la-0KH" id="s8U-85-Hah" customClass="TweetListTableViewCell" customModule="twitter" customModuleProvider="target">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="109"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="109"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="TweetText" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="WFj-Py-woO">
-                                                    <rect key="frame" x="5" y="0.0" width="404" height="39"/>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Lorem ipsum dolor sit er elit lamet, consectetaur cillium " textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="gt4-xQ-Gat">
+                                                    <rect key="frame" x="22" y="13" width="334" height="75"/>
+                                                    <color key="backgroundColor" systemColor="opaqueSeparatorColor" red="0.77647058820000003" green="0.77647058820000003" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <accessibility key="accessibilityConfiguration">
+                                                        <accessibilityTraits key="traits" notEnabled="YES"/>
+                                                    </accessibility>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="370" id="o7U-nX-zHd"/>
+                                                        <constraint firstAttribute="width" constant="374" id="2aI-oA-lXh"/>
+                                                        <constraint firstAttribute="height" constant="73" id="bes-LX-zvp"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g4G-H5-Aka">
-                                                    <rect key="frame" x="20" y="64" width="120" height="30"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <connections>
-                                                        <action selector="button1Pressed:" destination="XHy-la-0KH" eventType="touchUpInside" id="W4Q-9h-A7D"/>
-                                                    </connections>
-                                                </button>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v6i-Un-Ko3">
-                                                    <rect key="frame" x="142" y="64" width="131" height="30"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <connections>
-                                                        <action selector="button2Pressed:" destination="XHy-la-0KH" eventType="touchUpInside" id="bSK-on-NX8"/>
-                                                    </connections>
-                                                </button>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TII-Y0-7wT">
-                                                    <rect key="frame" x="281" y="64" width="104" height="30"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <connections>
-                                                        <action selector="button3Pressed:" destination="XHy-la-0KH" eventType="touchUpInside" id="v1M-f0-0Ca"/>
-                                                    </connections>
-                                                </button>
+                                                    <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                </textView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="WFj-Py-woO" firstAttribute="top" secondItem="s8U-85-Hah" secondAttribute="top" id="y8h-PK-Sk5"/>
+                                                <constraint firstItem="gt4-xQ-Gat" firstAttribute="trailing" secondItem="s8U-85-Hah" secondAttribute="trailingMargin" constant="2" id="7gW-oo-57F"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="gt4-xQ-Gat" secondAttribute="bottom" constant="10" id="b3Y-S3-Uig"/>
+                                                <constraint firstItem="gt4-xQ-Gat" firstAttribute="top" secondItem="s8U-85-Hah" secondAttribute="topMargin" constant="2" id="gPK-kB-WHO"/>
+                                                <constraint firstItem="gt4-xQ-Gat" firstAttribute="leading" secondItem="s8U-85-Hah" secondAttribute="leadingMargin" constant="2" id="qro-pL-4iT"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="hashTagButton1" destination="g4G-H5-Aka" id="vhj-Fb-ejp"/>
-                                            <outlet property="hashTagButton2" destination="v6i-Un-Ko3" id="juq-h1-n8B"/>
-                                            <outlet property="hashTagButton3" destination="TII-Y0-7wT" id="xt1-kh-Hcm"/>
-                                            <outlet property="tweetTextLbl" destination="WFj-Py-woO" id="dAJ-Go-a7g"/>
+                                            <outlet property="tweetTextView" destination="gt4-xQ-Gat" id="4Eb-ti-uLM"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Settings" translatesAutoresizingMaskIntoConstraints="NO" id="MtE-Dy-KJ4">
-                                <rect key="frame" x="304" y="49" width="105" height="34"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Settings" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UYb-RQ-Pc5">
+                                <rect key="frame" x="290" y="49" width="82" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="120" id="ZEx-5g-32V"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="settingsPressed:" destination="ryW-qP-5hN" eventType="touchDown" id="yJI-pu-dbJ"/>
+                                </connections>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="MtE-Dy-KJ4" firstAttribute="top" secondItem="9DZ-66-gSa" secondAttribute="top" constant="5" id="0U0-KS-Trk"/>
                             <constraint firstItem="Gwj-oQ-Mao" firstAttribute="top" secondItem="9DZ-66-gSa" secondAttribute="top" id="EKk-6W-jxg"/>
                             <constraint firstAttribute="bottom" secondItem="vxC-dZ-UEH" secondAttribute="bottom" id="Fig-pp-eJt"/>
                             <constraint firstItem="Gwj-oQ-Mao" firstAttribute="leading" secondItem="9DZ-66-gSa" secondAttribute="leading" id="LRs-Xg-nX1"/>
-                            <constraint firstItem="9DZ-66-gSa" firstAttribute="trailing" secondItem="MtE-Dy-KJ4" secondAttribute="trailing" constant="5" id="MpR-kF-xkY"/>
                             <constraint firstItem="Gwj-oQ-Mao" firstAttribute="leading" secondItem="vxC-dZ-UEH" secondAttribute="leading" id="X2c-Ta-YM5"/>
-                            <constraint firstItem="vxC-dZ-UEH" firstAttribute="top" secondItem="MtE-Dy-KJ4" secondAttribute="bottom" constant="5" id="aIO-ot-UVc"/>
+                            <constraint firstItem="9DZ-66-gSa" firstAttribute="trailing" secondItem="UYb-RQ-Pc5" secondAttribute="trailing" constant="2" id="Y9r-Nt-tI9"/>
+                            <constraint firstItem="UYb-RQ-Pc5" firstAttribute="top" secondItem="9DZ-66-gSa" secondAttribute="top" constant="5" id="Zam-bh-OII"/>
+                            <constraint firstItem="UYb-RQ-Pc5" firstAttribute="leading" secondItem="9DZ-66-gSa" secondAttribute="leading" constant="290" id="bjm-xB-KKN"/>
                             <constraint firstItem="Gwj-oQ-Mao" firstAttribute="centerX" secondItem="J3m-E5-zQE" secondAttribute="centerX" id="eD8-2B-85M"/>
                             <constraint firstItem="Gwj-oQ-Mao" firstAttribute="trailing" secondItem="vxC-dZ-UEH" secondAttribute="trailing" id="q5b-Nn-hlz"/>
                             <constraint firstItem="vxC-dZ-UEH" firstAttribute="top" secondItem="Gwj-oQ-Mao" secondAttribute="bottom" id="qm7-cU-dNv"/>
-                            <constraint firstItem="MtE-Dy-KJ4" firstAttribute="leading" secondItem="9DZ-66-gSa" secondAttribute="leading" constant="304" id="yUO-dB-T3R"/>
+                            <constraint firstItem="vxC-dZ-UEH" firstAttribute="top" secondItem="UYb-RQ-Pc5" secondAttribute="bottom" constant="5" id="sX0-HW-P0P"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="9DZ-66-gSa"/>
                     </view>
                     <connections>
-                        <outlet property="settings" destination="MtE-Dy-KJ4" id="Ytg-nL-2NL"/>
+                        <outlet property="settings" destination="UYb-RQ-Pc5" id="lQn-fk-w6Q"/>
                         <outlet property="tweetsTableView" destination="vxC-dZ-UEH" id="ZS2-4Z-9Ef"/>
                     </connections>
                 </viewController>

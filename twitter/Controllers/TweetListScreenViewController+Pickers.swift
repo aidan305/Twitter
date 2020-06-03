@@ -16,6 +16,7 @@ extension TweetListScreenViewController: UIPickerViewDataSource, UIPickerViewDel
             rowCount = times.count
         } else if pickerView == hashTagPicker {
             rowCount = hashTags.count
+            selectedHashTag = hashTags[0]
         }
         return rowCount
     }
@@ -79,8 +80,8 @@ extension TweetListScreenViewController: UIPickerViewDataSource, UIPickerViewDel
   
     //MARK: timer refresh picker functions
     func createRefreshPicker() {
-        settings.isEditable = false
-        settings.isSelectable = true
+        settings.isUserInteractionEnabled = false
+
         timePicker.delegate = self
         settings.inputView = timePicker
         createPickerToolbar()
